@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,6 @@ Route::get('/', function () {
     return view('pages.home');
 })-> name("home");
 
-Route::get('/projects', function () {
-    return view('pages.projects');
-})-> name("projects");
-
 Route::get('/about', function () {
     return view('pages.about');
 })-> name("about");
@@ -28,6 +25,11 @@ Route::get('/about', function () {
 Route::get('/skills', function () {
     return view('pages.skills');
 })-> name("skills");
+
 Route::get('/tech-watch', function() {
     return view('pages.techWatch');
 })->name("tech-watch");
+
+
+Route::get('/projects', [ProjectController::class, 'index']) ->name('projects');
+Route::get('/projects/{slug}', [ProjectController::class, 'show']) ->name('project');

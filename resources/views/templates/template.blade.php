@@ -1,228 +1,128 @@
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="nav-bar">
-    <a href="#" class="logo">ALEXIAN.</a>
-    <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-    <nav class="navbar">
-        <ul>
-            <li><a href="{{ route('home') }}" class="{{ Request::routeIs('home') ? 'active' : ''}}">Accueil</a></li>
-            <li><a href="{{ route('projects') }}" class="{{ Request::routeIs('projects') ? 'active' : ''}}">Projets</a></li>
-            <li><a href="{{ route('about') }}" class="{{ Request::routeIs('about') ? 'active' : ''}}">À propos</a></li>
-            <li><a href="{{ route('skills') }}" class="{{ Request::routeIs('skills') ? 'active' : ''}}">Livret de compétences</a></li>
-            <li><a href="{{ route('tech-watch') }}" class="{{ Request::routeIs('tech-watch') ? 'active' : ''}}">Veille technologique</a></li>
-        </ul>
-    </nav>
-</div>
-@yield('content')
-@section('footer')
-<div class="footer">
-    <div class="copyright">
-    <i class='bx bx-copyright'>2024</i>
-    </div>
-<div class="footer-links">
-        <a href="#"><i class='bx bxl-github'></i></a>
-        <a href="#"><i class='bx bxl-linkedin' ></i></a>
-    </div>
-</div>
-@show
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-        list-style: none;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        box-sizing: border-box;
-    }
-    body{
-        background: #090b11;
-        color: #c3cadb;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        height: 100vh;
-        width: 100vw;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-    }
-    /** responsive navbar */
-    .nav-bar {
-        display: block;
-        width: 100%;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        /**border-radius: 1rem;*/
-        /** border : 1px solid #2d3445; */
-        padding: 10px 100px;
-        background:  #151a27;
-        box-shadow: #bbbbbb 0px 1px 8px -2px;
-    }
-    .logo{
-        position: relative;
-        font-size: 28px;
-        color: #fefefe;
-        text-decoration: none;
-        font-weight: 600;
-    }
-    .hamburger{
-        display: none;
-    }
-    .navbar{
-        position: relative;
-        transition: 0.2s;
-        margin: 0 5px;
-    }
+<head>
 
-    .navbar ul {
-        display: flex;
-    }
-    .navbar ul li a{
-        display: block;
-        color: #c3cadb;
-        font-size: 20px;
-        padding: 10px 25px;
-        border-radius: 50px;
-        transition: 0.2s;
-        margin: 0 5px;
-    }
-    .navbar ul li a:hover{
-        color :#fefefe;
-        background: #7611a6;
-    }
-    .navbar ul li a.active{
-        color: #fefefe;
-        background: #7611a6;
-    }
-    @media only screen and (max-width: 1300px){
-        .navbar ul li a {
-            padding: 10px 20px;
-        }
-    }
-    @media only screen and (max-width: 1250px){
-        .navbar ul li a {
-            padding: 10px 17px;
-        }
-    }
-    @media only screen and (max-width: 1200px){
-        .navbar ul li a {
-            padding: 10px 15px;
-        }
-    }
-    @media only screen and (max-width: 1150px){
-        .navbar ul li a {
-            padding: 10px 13px;
-        }
-    }
-    @media only screen and (max-width: 1100px){
-        .navbar ul li a {
-            padding: 10px 10px;
-        }
-    }
-    @media only screen and (max-width: 1050px){
-        .navbar ul li a {
-            padding: 10px 7px;
-        }
-    }
-    @media only screen and (max-width: 1000px){
-        .navbar ul li a {
-            padding: 10px 5px;
-        }
-    }
-    @media only screen and (max-width: 900px){
-        .hamburger{
-            display: block;
-            cursor: pointer;
-        }
-        .hamburger .line{
-            width: 30px;
-            height: 3px;
-            background: #fefefe;
-            margin: 6px 0;
-        }
-        .navbar{
-            height: 0px;
-            position: absolute;
-            top: 80px;
-            left: 0;
-            right: 0;
-            width: 100vw;
-            background: #151a27;
-            transition: 0.5s;
-            overflow: hidden;
-        }
-        .navbar.active{
-            height: 450px;        
-        }
-        .navbar ul{
-            display: block;
-            width: fit-content;
-            margin: 80px auto 0 auto;
-            text-align: center;
-            transition: 0.5s;
-            opacity: 0;
-        }
-        .navbar.active ul{
-            opacity: 1;        
-        }
-        .navbar ul li a{
-            margin-bottom: 12px;
-        }
-    }
-    /** KEYFRAMES ANIMATION */
-    @keyframes showRight{
-        100%{
-            width: 0;
-        }
-    }
-    /** footer */
-    .footer{
-        width: 100%;
-        height: 80px;
-        display: block;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background:  #151a27;
-        padding: 10px 100px;
-        /** border : 1px solid #2d3445; */
-        box-shadow: #bbbbbb 0px 1px 8px -2px;
-        }
-    .footer-links{
-        margin-left: 90%;
-    }
-    .footer-links a{
-        position: relative;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        background: transparent;
-        border: 2px solid #fefefe;
-        border-radius: 50%;
-        font-size: 20px;
-        color: #fefefe;
-        text-decoration: none;
-        z-index: 1;
-        overflow: hidden;
-        transition: .5s;
-    }
-    .footer-links a:hover{
-        color: #081b29;
-    }
-</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="PELLIER Alexian">
+
+    <title>Portfolio | PELLIER Alexian</title>
+
+    <link href="{{url('css/app.css')}}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="{{url('js/app.js')}}" defer></script>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="maintenance-nav-bar" style="display: none;">
+        <p class="maintenance-logo"><i class="ri-error-warning-line" style="font-size:50px;"></i> Ce portfolio n'est pas complètement terminé, pour l'instant il n'est pas visualisable sur 
+            téléphone mais le sera bientôt. De plus je n'ai pas terminé ma veille technologique et je travaille
+        encore sur l'affichage de mes projets.</p>
+    </div>
+    <div class="nav-bar">
+        <a href="{{ route('home') }}" class="logo">ALEXIAN.</a>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ route('home') }}" class="{{ Request::routeIs('home') ? 'active' : ''}}">Accueil</a></li>
+                <li><a href="{{ route('projects') }}" class="{{ Request::routeIs('projects') ? 'active' : ''}}">Projets</a></li>
+                <li><a href="{{ route('about') }}" class="{{ Request::routeIs('about') ? 'active' : ''}}">À propos</a></li>
+                <li><a href="{{ route('skills') }}" class="{{ Request::routeIs('skills') ? 'active' : ''}}">Livret de compétences</a></li>
+                <li><a href="{{ route('tech-watch') }}" class="{{ Request::routeIs('tech-watch') ? 'active' : ''}}">Veille technologique</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    @section('content')
+    <hr class="separator">
+    <section class="contact-container">
+        <div class="contact-text">
+            <h1 class="contact-title">
+                Envie de me contacter ?
+            </h1>
+        </div>
+        <div class="contact-btn">
+            <a href="mailto:alexian.pellier2912@gmail.com">C'est par ici <i class="ri-send-plane-fill"></i></a>
+        </div>
+    </section>
+
+    <hr style="display: none;" class="separator">
+    <section style="display: none;" class="linkedin-container">
+    <div class="badge-base LI-profile-badge" data-locale="fr_FR" data-size="large" data-theme="dark" data-type="HORIZONTAL" 
+        data-vanity="alexian-pellier-613606251" data-version="v1"><a class="badge-base__link LI-simple-link" 
+        href="https://fr.linkedin.com/in/alexian-pellier-613606251?trk=profile-badge">Alexian PELLIER</a></div>
+    </section>
+
+    <hr class="separator">
+    <section class="cv-container">
+        <div class="cv-text">
+            <h1 class="cv-title">
+                Mon CV à télécharger :
+            </h1>
+        </div>
+        <div class="cv-btn">
+            <a href="{{url('assets/CV_AlexianPellier.pdf')}}" target="_blank"> C'est ici <i class="ri-download-line"></i></a>
+        </div>
+    </section>
+
+    @show
+
+    @section('footer')
+    <footer>
+        <div class="footercontent">
+            <div class="footer-section about">
+                <h2 class="logo-text">Alexian.</h2>
+                <p>Etudiant dans le développement informatique. Je me spécialise dans les langages web.</p></br>
+                <p>Portfolio réalisé en Laravel 10 principalement.</p>
+            </div>
+            <div class="footer-section links">
+                <h2>Liens</h2>
+                <ul>
+                    <li><a href="{{ route('home') }}">Accueil</a></li>
+                    <li><a href="{{ route('projects') }}">Projets</a></li>
+                    <li><a href="{{ route('about') }}">À propos</a></li>
+                    <li><a href="{{ route('skills') }}">Livret de compétences</a></li>
+                    <li><a href="{{ route('tech-watch') }}">Veille technologique</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h2>Contact</h2>
+                <ul>
+                    <li><a href="mailto:alexian.pellier2912@gmail.com"><i class="ri-mail-line"></i> alexian.pellier2912@gmail.com</a></li>
+                    <li><a href="tel:+33643353328"><i class="ri-phone-fill"></i> 06.43.35.33.28</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><i class="ri-copyright-line"></i> <?php
+            echo date("Y") ?> Alexian Pellier - Tous droits réservés</p>
+            <div class="footer-social">
+                <a href="#" style="display: none;"><i class="ri-instagram-line"></i></a>
+                <a href="#" style="display: none;"><i class="ri-threads-fill"></i></a>
+                <a href="https://github.com/Bekso1204"><i class="ri-github-fill"></i></a>
+                <a href="https://www.linkedin.com/in/alexian-pellier-613606251/"><i class="ri-linkedin-fill"></i></a>
+            </div>
+        </div>
+    </footer>
+    @show
+
+</body>
+
+</html>
 <script>
-    const navbar = document.querySelector('.navbar'); 
+    const navbar = document.querySelector('.navbar');
     const hamburger = document.querySelector('.hamburger')
 
     hamburger.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-});
+        navbar.classList.toggle('active');
+    });
 </script>
